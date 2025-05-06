@@ -87,7 +87,9 @@ public class DashboardTela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gerenciarCursosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciarCursosButtonActionPerformed
-        // TODO add your handling code here:
+        CursosTela ct = new CursosTela();
+        ct.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_gerenciarCursosButtonActionPerformed
 
     /**
