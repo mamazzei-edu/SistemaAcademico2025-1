@@ -19,6 +19,15 @@ public class Curso {
         this.tipo = tipo;
     }
 
+    public Curso(String nome, String tipo) {
+        this.nome = nome;
+        this.tipo = tipo;
+    }
+    
+    public Curso(int id){
+        this.id = id;
+    }
+    
     /**
      * @return the id
      */
@@ -61,6 +70,9 @@ public class Curso {
         this.tipo = tipo;
     }
     
-    
+    @Override
+    public String toString() {
+        return this.tipo + " - " + this.nome;
+    }
     
 }

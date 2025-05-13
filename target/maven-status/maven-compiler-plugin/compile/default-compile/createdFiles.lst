@@ -1,4 +1,5 @@
 br\maua\poo\sistemaacademico\CursosTela$2.class
+br\maua\poo\sistemaacademico\CursosTela$8.class
 br\maua\poo\sistemaacademico\Usuario.class
 br\maua\poo\sistemaacademico\LoginTela.class
 br\maua\poo\sistemaacademico\LoginTela$4.class
@@ -6,6 +7,7 @@ br\maua\poo\sistemaacademico\CursosTela$3.class
 br\maua\poo\sistemaacademico\CursosTela$1.class
 br\maua\poo\sistemaacademico\CursosTela$4.class
 br\maua\poo\sistemaacademico\LoginTela$3.class
+br\maua\poo\sistemaacademico\CursosTela$9.class
 br\maua\poo\sistemaacademico\ConexaoBD.class
 br\maua\poo\sistemaacademico\DAO.class
 br\maua\poo\sistemaacademico\DashboardTela$2.class
@@ -17,3 +19,4 @@ br\maua\poo\sistemaacademico\DashboardTela.class
 br\maua\poo\sistemaacademico\LoginTela$1.class
 br\maua\poo\sistemaacademico\CursosTela.class
 br\maua\poo\sistemaacademico\Curso.class
+br\maua\poo\sistemaacademico\CursosTela$7.class

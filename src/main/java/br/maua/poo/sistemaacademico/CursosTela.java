@@ -48,6 +48,11 @@ public class CursosTela extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Gerenciamento de cursos"));
 
         cursosComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cursosComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cursosComboBoxActionPerformed(evt);
+            }
+        });
 
         idCursoTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("Id"));
         idCursoTextField.setEnabled(false);
@@ -82,9 +87,19 @@ public class CursosTela extends javax.swing.JFrame {
 
         atualizarCursoButton.setText("Atualizar");
         atualizarCursoButton.setEnabled(false);
+        atualizarCursoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarCursoButtonActionPerformed(evt);
+            }
+        });
 
         removerCursoButton.setText("Remover");
         removerCursoButton.setEnabled(false);
+        removerCursoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerCursoButtonActionPerformed(evt);
+            }
+        });
 
         cancelarCursoButton.setText("Cancelar");
         cancelarCursoButton.setEnabled(false);
@@ -99,10 +114,6 @@ public class CursosTela extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(cursosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(idCursoTextField)
@@ -112,23 +123,27 @@ public class CursosTela extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(removerCursoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(adicionarCursoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cancelarCursoButton, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(atualizarCursoButton, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(88, 88, 88))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(cursosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(13, 13, 13)
                 .addComponent(cursosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(idCursoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(idCursoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(nomeCursoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeCursoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tipoCursoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tipoCursoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(adicionarCursoButton)
@@ -137,7 +152,7 @@ public class CursosTela extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removerCursoButton)
                     .addComponent(cancelarCursoButton))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,12 +188,102 @@ public class CursosTela extends javax.swing.JFrame {
     }//GEN-LAST:event_tipoCursoTextFieldActionPerformed
 
     private void adicionarCursoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarCursoButtonActionPerformed
-        // TODO add your handling code here:
+        if (nomeCursoTextField.isEnabled()) {
+            String nomeCurso = nomeCursoTextField.getText();
+            String tipoCurso = tipoCursoTextField.getText();
+            if (nomeCurso == null || nomeCurso.length() == 0 || tipoCurso == null || tipoCurso.length() == 0){
+                JOptionPane.showMessageDialog (null, "Preencha curso e tipo");
+            }
+            else{
+                try{
+                    int escolha = JOptionPane.showConfirmDialog(null, "Confirmar cadastro de novo curso?");
+                    if (escolha == JOptionPane.YES_OPTION){
+                        Curso curso = new Curso (nomeCurso, tipoCurso);
+                        DAO dao = new DAO();
+                        dao.inserirCurso(curso);
+                        JOptionPane.showMessageDialog(null, "Curso cadastrado com sucesso");
+                        nomeCursoTextField.setText("");
+                        tipoCursoTextField.setText("");
+                        nomeCursoTextField.setEnabled(false);
+                        tipoCursoTextField.setEnabled(false);
+                        adicionarCursoButton.setText("Novo");
+                        buscarCursos();
+                    }
+                }
+                catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "Falha técnica, tente mais tarde");
+                    e.printStackTrace();
+               }
+            }
+        } else {
+            nomeCursoTextField.setText("");
+            tipoCursoTextField.setText("");
+            idCursoTextField.setText("");
+            nomeCursoTextField.setEnabled(true);
+            tipoCursoTextField.setEnabled(true);
+            adicionarCursoButton.setText("Salvar");
+        }
     }//GEN-LAST:event_adicionarCursoButtonActionPerformed
 
     private void cancelarCursoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCursoButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelarCursoButtonActionPerformed
+
+    private void cursosComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cursosComboBoxActionPerformed
+        Curso curso = (Curso) cursosComboBox.getSelectedItem();
+        idCursoTextField.setText(Integer.toString(curso.getId()));
+        nomeCursoTextField.setText(curso.getNome());
+        tipoCursoTextField.setText(curso.getTipo());
+        nomeCursoTextField.setEnabled(true);
+        tipoCursoTextField.setEnabled(true);
+        atualizarCursoButton.setEnabled(true);
+        removerCursoButton.setEnabled(true);
+    }//GEN-LAST:event_cursosComboBoxActionPerformed
+
+    private void atualizarCursoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarCursoButtonActionPerformed
+       
+        int escolha = JOptionPane.showConfirmDialog(null, "Atualizar curso?");
+             if (escolha == JOptionPane.YES_OPTION){
+                 try{
+                     int id = Integer.parseInt (idCursoTextField.getText());
+                     String nome = nomeCursoTextField.getText();
+                     String tipo = tipoCursoTextField.getText();
+                     Curso curso = new Curso (id, nome, tipo);
+                     DAO dao = new DAO();
+                     dao.atualizarCurso(curso);
+                     JOptionPane.showMessageDialog(null, "Curso atualizado com sucesso");
+                     buscarCursos();
+                     idCursoTextField.setText("");
+                     nomeCursoTextField.setText("");
+                     tipoCursoTextField.setText("");
+                 }
+                 catch (Exception e){
+                     JOptionPane.showMessageDialog(null, "Falha técnica. Tente novamente  mais tarde.");
+                     e.printStackTrace();
+                 }
+            }
+    }//GEN-LAST:event_atualizarCursoButtonActionPerformed
+
+    private void removerCursoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerCursoButtonActionPerformed
+         int escolha = JOptionPane.showConfirmDialog(null, "Remover curso?");
+         if (escolha == JOptionPane.YES_OPTION){
+             try{
+                 int id = Integer.parseInt (idCursoTextField.getText());
+                 Curso curso = new Curso(id);
+                 DAO dao = new DAO();
+                 dao.removerCurso(curso);
+                 JOptionPane.showMessageDialog(null, "Curso removido com sucesso!");
+                 buscarCursos();
+                 nomeCursoTextField.setText("");
+                 tipoCursoTextField.setText("");
+                 idCursoTextField.setText("");
+             }
+             catch (Exception e){
+                 JOptionPane.showMessageDialog(null, "Falha técnica. Tente novamente mais tarde.");
+                 e.printStackTrace();
+             }
+         }
+    }//GEN-LAST:event_removerCursoButtonActionPerformed
 
     
     private void buscarCursos (){

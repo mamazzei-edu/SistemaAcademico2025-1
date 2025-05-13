@@ -48,6 +48,38 @@ public class DAO {
                 }
     }
     
+    public void inserirCurso (Curso curso) throws Exception{
+         String sql = "INSERT INTO tb_curso (nome, tipo) VALUES (?, ?);";
+         try (Connection conexao = ConexaoBD.obterConexao();
+             PreparedStatement ps = conexao.prepareStatement(sql)){
+             ps.setString(1, curso.getNome());
+             ps.setString(2, curso.getTipo());
+             ps.execute();
+         }
+    }    
+    
+
+    public void atualizarCurso (Curso curso) throws Exception{
+         String sql = "UPDATE tb_curso SET nome = ?, tipo = ? WHERE id = ?";
+         try (Connection conexao = ConexaoBD.obterConexao();
+             PreparedStatement ps = conexao.prepareStatement(sql)){
+             ps.setString (1, curso.getNome());
+             ps.setString (2, curso.getTipo());
+             ps.setInt (3, curso.getId());
+             ps.execute();
+         }
+     }
+    
+    
+    public void removerCurso (Curso curso) throws Exception{
+         String sql = "DELETE FROM tb_curso WHERE id = ?";
+         try (Connection conexao = ConexaoBD.obterConexao();
+             PreparedStatement ps = conexao.prepareStatement(sql);){
+             ps.setInt (1, curso.getId());
+             ps.execute();
+         }
+     }
+    
     
 }
 
