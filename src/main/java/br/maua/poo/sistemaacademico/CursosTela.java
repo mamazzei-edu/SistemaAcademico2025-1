@@ -188,7 +188,7 @@ public class CursosTela extends javax.swing.JFrame {
     }//GEN-LAST:event_tipoCursoTextFieldActionPerformed
 
     private void adicionarCursoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarCursoButtonActionPerformed
-        if (nomeCursoTextField.isEnabled()) {
+        if (nomeCursoTextField.isEnabled() && adicionarCursoButton.getText().equals("Salvar")) {
             String nomeCurso = nomeCursoTextField.getText();
             String tipoCurso = tipoCursoTextField.getText();
             if (nomeCurso == null || nomeCurso.length() == 0 || tipoCurso == null || tipoCurso.length() == 0){
@@ -215,6 +215,11 @@ public class CursosTela extends javax.swing.JFrame {
                     e.printStackTrace();
                }
             }
+        } else if (nomeCursoTextField.isEnabled() && adicionarCursoButton.getText().equals("Novo"))   { 
+            nomeCursoTextField.setText("");
+            tipoCursoTextField.setText("");
+            idCursoTextField.setText("");            
+            adicionarCursoButton.setText("Salvar");
         } else {
             nomeCursoTextField.setText("");
             tipoCursoTextField.setText("");
